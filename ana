@@ -5,7 +5,7 @@ search_item = input('What ingredient do you have?')
 
 with open('avaliable.txt', 'r') as drink_file:
     avaliable = drink_file.read()
-    avaliable = avaliable + search_item + '\n'
+    avaliable = avaliable + ' '+ search_item
 
 with open('avaliable.txt', 'w+') as drink_file:
     drink_file.write(avaliable)
@@ -14,10 +14,15 @@ no_item = input("What ingredient don't you want in your drink?")
 
 with open('unavaliable.txt', 'r') as no_file:
     unavaliable = no_file.read()
-    unavaliable = unavaliable + no_item + '\n'
+    unavaliable = unavaliable + ' ' + no_item
 
 with open('avaliable.txt', 'w+') as drink_file:
     drink_file.write(unavaliable)
+    
+    
+    
+#have to pull up API to compare then we can print this
+    print ("here is some of the recipe with {} and without {}".format(avaliable, unavaliable))
 
 
 
