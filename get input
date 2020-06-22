@@ -1,0 +1,16 @@
+#get yes ingredients
+yes_input = input('What ingredient do you have? Separate each item by commas!')
+str = yes_input.split (",")
+avaliable = []
+for i in str:
+	avaliable.append(i)
+print (avaliable)
+
+#get the no ingredients
+no_input = input("What ingredient don't you want in the drink? Separate each item by commas!")
+str2 = no_input.split (",")
+
+unavaliable = []
+for i in str2:
+	unavaliable.append(i)
+print (unavaliable)
