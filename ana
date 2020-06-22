@@ -1,0 +1,15 @@
+#make user ingredient list file
+
+search_item = input ('What ingredient do you have?')
+
+with open ('avaliable.txt','r') as drink_file:
+    avaliable = drink_file.read()
+    avaliable = avaliable + search_item + '\n'
+
+with open ('avaliable.txt','w+') as drink_file:
+    drink_file.write(todo)
+
+#need to pull up the API to compare
+
+if search_item in the_API:
+    print the_API
