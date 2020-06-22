@@ -1,23 +1,23 @@
-#make user ingredient list file
+# make user ingredient list file
+#make two txt file in the same folder for this to work: avaliable.txt and unavaliable.txt
 
-search_item = input ('What ingredient do you have?')
+search_item = input('What ingredient do you have?')
 
-with open ('avaliable.txt','r') as drink_file:
+with open('avaliable.txt', 'r') as drink_file:
     avaliable = drink_file.read()
     avaliable = avaliable + search_item + '\n'
 
-with open ('avaliable.txt','w+') as drink_file:
-    drink_file.write(todo)
+with open('avaliable.txt', 'w+') as drink_file:
+    drink_file.write(avaliable)
 
-no_item = input ('What ingredient don't you want in your drink?')
+no_item = input("What ingredient don't you want in your drink?")
 
-with open ('unavaliable.txt','r') as no_file:
+with open('unavaliable.txt', 'r') as no_file:
     unavaliable = no_file.read()
     unavaliable = unavaliable + no_item + '\n'
 
-with open ('avaliable.txt','w+') as drink_file:
-    drink_file.write(todo)
-
+with open('avaliable.txt', 'w+') as drink_file:
+    drink_file.write(unavaliable)
 
 
 
