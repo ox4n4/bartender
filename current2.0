@@ -5,7 +5,8 @@ import pprint
 headers = { 'Content-Type': 'application/json'}
 
 def get_cocktail():
-    api_id = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita/􏰆􏰈{}/'
+    id_cocktail = random.cocktail(11000,11010)
+    url = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita/􏰆􏰈{}/'.format(id_cocktail)
     api_key = '1'
 
     response = requests.get(api_url, headers=headers)
