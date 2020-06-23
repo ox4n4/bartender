@@ -1,0 +1,107 @@
+import requests
+import json
+from pprint import pprint
+
+# get yes ingredients
+yes_input = input('What ingredient do you have? Separate each item by commas!')
+str = yes_input.split(",")
+avaliable = []
+for i in str:
+    avaliable.append(i.strip())
+print("You choose the following ingredients: ")
+print(avaliable)
+
+# API
+headers = {'Content-Type': 'application/json', 'Authorization': 'Bearar {0}'.format(1)}
+empty_list = ['']
+def get_list(good):
+    headers = {'Content-Type': 'application/json', 'Authorization': 'Bearar {0}'.format(1)}
+    url = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=' + good
+    response = requests.get(url)
+    recipe = response.json()
+    for count in recipe['drinks']:
+        pprint(count['strDrink'])
+
+def get_list_a(one):
+    headers = {'Content-Type': 'application/json', 'Authorization': 'Bearar {0}'.format(1)}
+    urlone = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=' + one
+    responseone = requests.get(urlone)
+    recipeone = responseone.json()
+    #for count in recipeone['drinks']:
+    #    pprint(count['strDrink'])
+    return recipeone
+
+def get_list_b(two):
+    headers = {'Content-Type': 'application/json', 'Authorization': 'Bearar {0}'.format(1)}
+    urltwo = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=' + two
+    responsetwo = requests.get(urltwo)
+    recipetwo = responsetwo.json()
+    #for count in recipetwo['drinks']:
+    #    pprint(count['strDrink'])
+    return recipetwo
+
+#compare list
+def compare_list (three, four):
+    list1_as_set = set(three)
+    recipe2 = set(four)
+    intersection = list1_as_set.intersection(recipe2)
+    print("\nAnd here is the possible drinks you can make with your choosen ingredients:")
+    print(intersection)
+    intersection_as_list = list(intersection)
+    # for count in intersection:
+    #     #pprint(count['strDrink'])
+    #     print("three testing")
+    #     print(three)
+    #     print("four testing")
+    #     print(four)
+    #     print("testing")
+    #     pprint(count)
+    return intersection
+
+if int(len(avaliable)) > 1:
+    #print(avaliable[0])
+    #print(avaliable[1])
+    ana = (avaliable[0])
+    #print (ana)
+    oxana = (avaliable[1])
+    #print(oxana)
+    c=get_list_a(ana)
+    d=get_list_b(oxana)
+    drink_list_1 = [drink['strDrink'] for drink in c['drinks']]
+    drink_list_2 = [drink['strDrink'] for drink in d['drinks']]
+    print("This is the drink you can make with " + avaliable[0] +":\n")
+    print(drink_list_1)
+    print("\nThis is the drink you can make with " + avaliable[1]+ ":\n")
+    print(drink_list_2)
+
+    compare_list(drink_list_1, drink_list_2)
+
+    rere_input = input('\nWhat drinks out of the list did you want to make?')
+    urlre = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + rere_input
+    responsere = requests.get(urlre)
+    recipere = responsere.json()
+    print('\n')
+    for countre in recipere['drinks']:
+        pprint(countre['strInstructions'])
+    for count3 in recipere['drinks']:
+        im = (count3['strDrinkThumb'])
+    print('\n')
+    print("Click on the link to see the image of the drink>> " + im)
+else:
+        print(avaliable[0])
+        print('\n')
+        b = avaliable[0]
+        get_list(b)
+        re_input = input('What drinks out of the list did you want to make?')
+        url2 = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + re_input
+        response2 = requests.get(url2)
+        recipe2 = response2.json()
+        #pprint(recipe2)
+        print('\n')
+        print('here is the instruction!')
+        for count2 in recipe2['drinks']:
+            pprint(count2['strInstructions'])
+        for count3 in recipe2['drinks']:
+            im = (count3['strDrinkThumb'])
+        print('\n')
+        print("Click on the link to see the image of the drink>> " + im)
