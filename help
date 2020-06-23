@@ -1,0 +1,45 @@
+import requests
+import json
+
+#get yes ingredients
+yes_input = input('What ingredient do you have? Separate each item by commas!')
+str = yes_input.split (",")
+avaliable = []
+for i in str:
+	avaliable.append(i)
+print (avaliable)
+
+#get the no ingredients
+no_input = input("What ingredient don't you want in the drink? Separate each item by commas!")
+str2 = no_input.split (",")
+unavaliable = []
+for i in str2:
+	unavaliable.append(i)
+print (unavaliable)
+
+#API stuff
+headers = { 'Content-Type': 'application/json'}
+url = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita/􏰆􏰈{}/'
+response = requests.get(url)
+print(response)
+recipe = response.json()
+pprint(recipe['ingredient'])
+print(recipe['instruction'])
+headers = { 'Content-Type': 'application/json'}
+
+def get_cocktail():
+    url = 'https://www.thecocktaildb.com/api/json/v2/9973553/popular.php'
+    api_token = '9973553'
+    response = requests.get(url, headers=headers)
+    for item in avaliable
+        if avaliable(item) in source['ingredient']:
+            if unavaliable(item) not in source['ingredients']
+                print("We found a match that fits your description!")
+                for cocktail in cocktail_info.items():
+                    print(cocktail)
+            else:
+                print('no match found')
+        else:
+            print('no match found')
+
+get_cocktail()
