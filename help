@@ -31,9 +31,9 @@ def get_cocktail():
     url = 'https://www.thecocktaildb.com/api/json/v2/9973553/popular.php'
     api_token = '9973553'
     response = requests.get(url, headers=headers)
-    for item in avaliable
+    for item in avaliable:
         if avaliable(item) in source['ingredient']:
-            if unavaliable(item) not in source['ingredients']
+            if unavaliable(item) not in source['ingredients']:
                 print("We found a match that fits your description!")
                 for cocktail in cocktail_info.items():
                     print(cocktail)
