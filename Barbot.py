@@ -1,0 +1,26 @@
+import requests
+import json
+from pprint import pprint
+
+yes_input = input('What key ingredient do want to use?')
+
+#API stuff
+headers = { 'Content-Type': 'application/json', 'Authorization': 'Bearar {0}'.format(1)}
+url = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i='+ yes_input
+response = requests.get(url)
+
+recipe = response.json()
+#pprint(recipe)
+for count in recipe['drinks']:
+    pprint(count['strDrink'])
+
+re_input = input('What drinks out of the list did you want to make?')
+url2 = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s='+ re_input
+response2 = requests.get(url2)
+recipe2 = response2.json()
+#pprint(recipe2)
+print('\n')
+print("instruction:")
+for count2 in recipe2['drinks']:
+    print('\n')
+    pprint (count2['strInstructions'])
