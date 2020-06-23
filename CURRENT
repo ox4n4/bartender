@@ -9,8 +9,21 @@ print (avaliable)
 #get the no ingredients
 no_input = input("What ingredient don't you want in the drink? Separate each item by commas!")
 str2 = no_input.split (",")
-
 unavaliable = []
 for i in str2:
 	unavaliable.append(i)
 print (unavaliable)
+
+#API stuff
+import json
+import requests
+import pprint
+headers = { 'Content-Type': 'application/json'}
+
+url = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita/􏰆􏰈{}/'
+response = requests.get(url)
+print(response)
+recipe = response.json()
+pprint(recipe)
+print(recipe['ingredients'])
+print(recipe['instruction'])
